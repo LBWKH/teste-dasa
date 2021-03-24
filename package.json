@@ -1,0 +1,27 @@
+{
+  "name": "teste-dasa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LBWKH/teste-dasa.git"
+  },
+  "keywords": [],
+  "author": "lbwkh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LBWKH/teste-dasa/issues"
+  },
+  "homepage": "https://github.com/LBWKH/teste-dasa#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2"
+  }
+}
