@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Exam = require("../models/Exam.mode");
+const Exam = require("../models/Exam.model");
 
 // Crud - Create (Rota para criar novo exame)
 router.post("/exam", async (req, res) => {

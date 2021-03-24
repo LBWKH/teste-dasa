@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 // Tem que ser assíncrono para o interpretador não ficar esperando a resposta
 function initializeDb() {
   mongoose
-    .connect("mongodb://localhost:27017/teste-dasa", {
+    .connect(`${process.env.MONGODB_URI}/teste-dasa`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
