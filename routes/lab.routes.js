@@ -20,7 +20,8 @@ router.post("/lab", async (req, res) => {
   }
 });
 
-// cRud - Read (Rota para listar todos os laboratórios)
+// cRud - Read
+// (Rota para listar todos os laboratórios)
 router.get("/lab", async (req, res) => {
   try {
     // O .find() sem filtros traz todos os documentos da collection, portanto trazer apenas os que tem status ativos true
@@ -28,6 +29,21 @@ router.get("/lab", async (req, res) => {
     console.log(labs);
 
     return res.status(200).json(labs);
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
+});
+
+// Rota para listar detalhes de um laboratório individual
+router.get("/lab/:id", async (req, res) => {
+  try {
+    const lab = await Lab.findOne({ _id: req.params.id }).populate("exams");
+    console.log(room);
+
+    if (!lab) {
+      return res.status(404).json({ msg: "Laboratório não encontrado" });
+    }
+    return res.status(200).json(room);
   } catch (err) {
     return res.status(500).json({ msg: err });
   }

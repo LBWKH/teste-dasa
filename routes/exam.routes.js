@@ -20,7 +20,8 @@ router.post("/exam", async (req, res) => {
   }
 });
 
-// cRud - Read (Rota para listar todos os exames)
+// cRud - Read
+// Rota para listar todos os exames
 router.get("/exam", async (req, res) => {
   try {
     // O .find() sem filtros traz todos os documentos da collection, portanto trazer apenas os que tem status ativos true
@@ -28,6 +29,21 @@ router.get("/exam", async (req, res) => {
     console.log(exams);
 
     return res.status(200).json(exams);
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
+});
+
+// Rota para listar detalhes de um exame individual
+router.get("/exam/:id", async (req, res) => {
+  try {
+    const exam = await Exam.findOne({ _id: req.params.id }).populate("labs");
+    console.log(exam);
+
+    if (!exam) {
+      return res.status(404).json({ msg: "Exame não encontrado" });
+    }
+    return res.status(200).json(room);
   } catch (err) {
     return res.status(500).json({ msg: err });
   }
