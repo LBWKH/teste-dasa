@@ -1,24 +1,28 @@
 const express = require("express");
 const router = express.Router();
-
+const { body } = require("express-validator");
 const Exam = require("../models/Exam.model");
 
 // Crud - Create (Rota para criar novo exame)
-router.post("/exam", async (req, res) => {
-  // Criar o documento no banco usando o Model
-  try {
-    //   Usa o model pré-definido para criar um novo documento no banco
-    const newExam = await Exam.create(req.body);
-    // O banco responde com o documento recém-criado
-    console.log(newExam);
+router.post(
+  "/exam",
+  body("newExam").isLength({ min: 3 }).trim().escape(),
+  async (req, res) => {
+    // Criar o documento no banco usando o Model
+    try {
+      //   Usa o model pré-definido para criar um novo documento no banco
+      const newExam = await Exam.create(req.body);
+      // O banco responde com o documento recém-criado
+      console.log(newExam);
 
-    // Responde a requisição com o documento recém-criado e o status 201 (Created)
-    return res.status(201).json(newExam);
-  } catch (err) {
-    //   Caso algo dê errado, responde com o status 500 (Internal server error) e o motivo do erro
-    return res.status(500).json({ msg: err });
+      // Responde a requisição com o documento recém-criado e o status 201 (Created)
+      return res.status(201).json(newExam);
+    } catch (err) {
+      //   Caso algo dê errado, responde com o status 500 (Internal server error) e o motivo do erro
+      return res.status(500).json({ msg: err });
+    }
   }
-});
+);
 
 // cRud - Read
 // Rota para listar todos os exames
@@ -37,7 +41,7 @@ router.get("/exam", async (req, res) => {
 // Rota para listar detalhes de um exame individual
 router.get("/exam/:id", async (req, res) => {
   try {
-    const exam = await Exam.findOne({ _id: req.params.id }).populate("labs");
+    const exam = await Exam.findOne({ _id: req.params.id }).populate("Lab");
     console.log(exam);
 
     if (!exam) {

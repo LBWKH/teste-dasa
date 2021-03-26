@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressValidator = require("express-validator");
 const app = express();
 const cors = require("cors");
 

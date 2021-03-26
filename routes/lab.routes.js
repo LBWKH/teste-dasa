@@ -37,7 +37,7 @@ router.get("/lab", async (req, res) => {
 // Rota para listar detalhes de um laboratório individual
 router.get("/lab/:id", async (req, res) => {
   try {
-    const lab = await Lab.findOne({ _id: req.params.id }).populate("exams");
+    const lab = await Lab.findOne({ _id: req.params.id }).populate("Exam");
     console.log(lab);
 
     if (!lab) {
