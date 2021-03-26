@@ -43,7 +43,7 @@ router.get("/exam/:id", async (req, res) => {
     if (!exam) {
       return res.status(404).json({ msg: "Exame não encontrado" });
     }
-    return res.status(200).json(room);
+    return res.status(200).json(exam);
   } catch (err) {
     return res.status(500).json({ msg: err });
   }

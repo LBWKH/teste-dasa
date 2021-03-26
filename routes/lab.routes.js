@@ -38,12 +38,12 @@ router.get("/lab", async (req, res) => {
 router.get("/lab/:id", async (req, res) => {
   try {
     const lab = await Lab.findOne({ _id: req.params.id }).populate("exams");
-    console.log(room);
+    console.log(lab);
 
     if (!lab) {
       return res.status(404).json({ msg: "Laboratório não encontrado" });
     }
-    return res.status(200).json(room);
+    return res.status(200).json(lab);
   } catch (err) {
     return res.status(500).json({ msg: err });
   }
