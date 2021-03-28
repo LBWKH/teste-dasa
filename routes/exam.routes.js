@@ -4,31 +4,22 @@ const { body } = require("express-validator");
 const Exam = require("../models/Exam.model");
 
 // Crud - Create (Rota para criar novo exame)
-router.post(
-  "/exam",
-  body("newExam").isLength({ min: 3 }).trim().escape(),
-  async (req, res) => {
-    // Criar o documento no banco usando o Model
-    try {
-      //   Usa o model pré-definido para criar um novo documento no banco
-      const newExam = await Exam.create(req.body);
-      // O banco responde com o documento recém-criado
-      console.log(newExam);
+router.post("/exam", body("name").trim().escape(), async (req, res) => {
+  try {
+    const newExam = await Exam.create(req.body);
 
-      // Responde a requisição com o documento recém-criado e o status 201 (Created)
-      return res.status(201).json(newExam);
-    } catch (err) {
-      //   Caso algo dê errado, responde com o status 500 (Internal server error) e o motivo do erro
-      return res.status(500).json({ msg: err });
-    }
+    console.log(newExam);
+
+    return res.status(201).json(newExam);
+  } catch (err) {
+    return res.status(500).json({ msg: err });
   }
-);
+});
 
 // cRud - Read
 // Rota para listar todos os exames
 router.get("/exam", async (req, res) => {
   try {
-    // O .find() sem filtros traz todos os documentos da collection, portanto trazer apenas os que tem status ativos true
     const exams = await Exam.find({ status: "ativo" });
     console.log(exams);
 
@@ -80,7 +71,6 @@ router.delete("/exam/:id", async (req, res) => {
     if (!deleted) {
       return res.status(404).json({ msg: "Exame não enontrado" });
     }
-    // Por padrões REST, operações de deleção DEVEM retornar NADA, um objeto vazio.
     return res.status(200).json({});
   } catch (err) {
     return res.status(500).json({ msg: err });

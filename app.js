@@ -5,12 +5,13 @@ const expressValidator = require("express-validator");
 const app = express();
 const cors = require("cors");
 
-// Configurar o app Express para entender requisições com conteúdo JSON
+// Configuração do Express
 app.use(express.json());
 
-// Configurar o app para entender requisições do tipo URLEncoded para envio de imagens
+// Configução do app para entender requisições do tipo URLEncoded para envio de imagens
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Configuração de CORS
 app.use(cors({ origin: process.env.CLIENT_URL }));
 
 // Importar a configuração do banco de dados (mongoose)

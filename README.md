@@ -20,3 +20,5 @@ The deployed mongodb_uri is: mongodb+srv://lbwkh:a1b2c3lbd4e5wkh@cluster0.evciw.
 `PORT` = Port server  
 `MONGODB_URI` = mongodb://localhost:27017  
 `CLIENT_URL` = http://localhost:3000
+
+### This API was developed according to REST standards

@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-// Criar conexão com banco
-// Tem que ser assíncrono para o interpretador não ficar esperando a resposta
+// Criação de conexão com o banco
 function initializeDb() {
   mongoose
     .connect(`${process.env.MONGODB_URI}/teste-dasa`, {
