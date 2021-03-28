@@ -1,6 +1,6 @@
 # Teste técnico DASA - Jr Back-end
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/run-collection/:collection_id)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/a6c671b4d597a2ed3f35)
 
 ## Deploy
 
