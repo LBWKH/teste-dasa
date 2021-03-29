@@ -5,7 +5,7 @@
 ## Deploy
 
 The link for the deployed API is [here](https://teste-dasa-laboratorios-exames.herokuapp.com/)  
-The deployed mongodb_uri is: mongodb+srv://lbwkh:a1b2c3lbd4e5wkh@cluster0.evciw.mongodb.net/myFirstDatabase?retryWrites=true
+If needed, please ask the author for the mongodb_uri.
 
 ## How to install packages
 
@@ -18,7 +18,7 @@ The deployed mongodb_uri is: mongodb+srv://lbwkh:a1b2c3lbd4e5wkh@cluster0.evciw.
 ## .env
 
 `PORT` = Port server  
-`MONGODB_URI` = mongodb+srv://lbwkh:a1b2c3lbd4e5wkh@cluster0.evciw.mongodb.net/myFirstDatabase?retryWrites=true
-`CLIENT_URL` = http://localhost:3000
+`MONGODB_URI` = Deployed DB
+`CLIENT_URL` = Client Url
 
 ### This API was developed according to REST standards
