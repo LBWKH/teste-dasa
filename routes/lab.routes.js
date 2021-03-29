@@ -4,21 +4,16 @@ const { body } = require("express-validator");
 const Lab = require("../models/Lab.model");
 
 // Crud - Create (Rota para criar novo laboratório)
-router.post(
-  "/lab",
-  body("name").trim().escape(),
-  body("exams").escape(),
-  async (req, res) => {
-    try {
-      const newLab = await Lab.create(req.body);
-      console.log(newLab);
+router.post("/lab", body("name").trim().escape(), async (req, res) => {
+  try {
+    const newLab = await Lab.create(req.body);
+    console.log(newLab);
 
-      return res.status(201).json(newLab);
-    } catch (err) {
-      return res.status(500).json({ msg: err });
-    }
+    return res.status(201).json(newLab);
+  } catch (err) {
+    return res.status(500).json({ msg: err });
   }
-);
+});
 
 // cRud - Read
 // (Rota para listar todos os laboratórios)
